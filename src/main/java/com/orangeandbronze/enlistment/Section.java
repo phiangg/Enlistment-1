@@ -1,2 +1,6 @@
-package com.orangeandbronze.enlistment;public class Section {
+package com.orangeandbronze.enlistment;
+
+class Section {
+
+
 }
