@@ -1,12 +1,11 @@
 package com.orangeandbronze.enlistment;
 
 import org.apache.commons.lang3.*;
-import org.apache.commons.lang3.Validate;
+import static org.apache.commons.lang3.Validate.*;
 
 import java.util.Objects;
 
-import static org.apache.commons.lang3.Validate.isTrue;
-import static org.apache.commons.lang3.Validate.notBlank;
+
 
 
 class Section {

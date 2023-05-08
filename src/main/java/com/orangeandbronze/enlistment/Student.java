@@ -1,7 +1,9 @@
 package com.orangeandbronze.enlistment;
 
-import java.util.ArrayList;
+import static org.apache.commons.lang3.Validate.*;
+
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 class Student {
@@ -19,14 +21,17 @@ class Student {
             throw new NullPointerException("Sections cannot be null");
         }
         this.studentNumber = studentNumber;
-        this.sections = new ArrayList<>(sections);
+        this.sections = new HashSet<>(sections);
         this.sections.removeIf(Objects::isNull); //remove any nulls in the collection
     }
+
     //Enlist the student in the section
     void enlist(Section section){
-        if (section == null){
+        /*if (section == null){
             throw new NullPointerException("Section cannot be null");
-        }
+        }*/
+        notNull(section);
+        isTrue(!sections.contains(section), "Section " + section + " already exists in sections");
         sections.add(section);
     }
 
