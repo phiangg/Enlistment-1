@@ -22,7 +22,6 @@ class Student {
         this.sections = new ArrayList<>(sections);
         this.sections.removeIf(Objects::isNull); //remove any nulls in the collection
     }
-
     //Enlist the student in the section
     void enlist(Section section){
         if (section == null){
