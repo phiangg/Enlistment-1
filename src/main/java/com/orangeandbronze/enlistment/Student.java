@@ -2,15 +2,17 @@ package com.orangeandbronze.enlistment;
 
 import static org.apache.commons.lang3.Validate.*;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 class Student {
 
     private final int studentNumber;
     //Collection represent one is to many
     private final Collection<Section> sections;
+
+    Student(int studentNumber){
+        this(studentNumber, Collections.emptyList());
+    }
 
     //Constructor
     Student(int studentNumber, Collection<Section> sections) {
@@ -26,13 +28,24 @@ class Student {
     }
 
     //Enlist the student in the section
-    void enlist(Section section){
+    void enlist(Section newSection){
         /*if (section == null){
             throw new NullPointerException("Section cannot be null");
         }*/
-        notNull(section);
-        isTrue(!sections.contains(section), "Section " + section + " already exists in sections");
-        sections.add(section);
+        notNull(newSection, "Section cannot be null");
+       /* isTrue(!sections.contains(section), "Section " + section + " already exists in sections");
+        sections.add(section);*/
+        sections.forEach(currSection -> currSection.checkForConflict(newSection));
+            //check if there's a sched conflict should be in the section class
+           /* if (currSection.hasConflict(newSection)){
+                throw new RuntimeException();
+            } */
+            sections.add(newSection);
+    }
+
+    //getter for Collection
+    Collection<Section> getSections() {
+        return new ArrayList<>(this.sections);
     }
 
     @Override
