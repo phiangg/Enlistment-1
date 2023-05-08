@@ -1,23 +1,35 @@
 package com.orangeandbronze.enlistment;
 
+import org.apache.commons.lang3.*;
+import org.apache.commons.lang3.Validate;
+
 import java.util.Objects;
+
+import static org.apache.commons.lang3.Validate.isTrue;
+import static org.apache.commons.lang3.Validate.notBlank;
+
 
 class Section {
 
     private final String sectionId;
 
     Section(String sectionId) {
-        if (sectionId == null){ //validation
+        //validation
+        notBlank(sectionId,"Section ID cannot be empty or whitespace");
+        isTrue(StringUtils.isAlphanumeric(sectionId),
+                "Section ID must be alphanumeric, was: " + sectionId);
+        /*if (sectionId == null){
             throw new NullPointerException("Section ID cannot be null");
         }
-        if (sectionId.trim().equals("")){ //avoid empty string, whitespace/blank
+        if (sectionId.trim().equals("")){
             throw new IllegalArgumentException("Section ID was empty or whitespace");
         }
-        if (sectionId.matches("regex")){ //make sure that student ID is alphanumeric
+        if (!StringUtils.isAlphanumeric(sectionId)){
             throw new IllegalArgumentException("Section ID must be alphanumeric, was: " + sectionId);
-        }
+        }*/
         this.sectionId = sectionId;
     }
+
     @Override
     public String toString(){
         return sectionId;
