@@ -41,8 +41,5 @@ public class StudentTest {
         student.enlist(section1);
         //Then at the 2nd enlistment and exception will be thrown
         assertThrows(Exception.class, () -> student.enlist(section2));
-
     }
-
-
 }

@@ -51,13 +51,15 @@ class Section {
 
     @Override
     public String toString(){
+
         return sectionId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Section section = (Section) o;
         return Objects.equals(sectionId, section.sectionId);
     }
